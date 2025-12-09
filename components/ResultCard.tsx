@@ -11,7 +11,9 @@ const ResultCard: React.FC<ResultCardProps> = ({ styleConfig, result }) => {
     if (result.imageUrl) {
       const link = document.createElement('a');
       link.href = result.imageUrl;
-      link.download = `portrait-${styleConfig.id}.png`;
+      // Add timestamp to make filename unique
+      const timestamp = Date.now();
+      link.download = `portrait-${styleConfig.id}-${timestamp}.png`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
